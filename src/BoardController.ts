@@ -23,6 +23,4 @@ board.on("ready", function () {
 
   a.to(0);
   b.to(0);
-
-
 });
