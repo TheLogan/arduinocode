@@ -1,6 +1,6 @@
 // import { Board, Servo } from "johnny-five";
 // import { RaspiIO} from "raspi-io";
-import five from "johnny-five";
+const five = require("johnny-five");
 
 let Raspi = require("raspi-io").RaspiIO;
 let board = new five.Board({
