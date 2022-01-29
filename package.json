@@ -11,6 +11,5 @@
   "scripts": {
     "start": "node --loader ts-node/esm ./src/server.ts",
     "st": "node --loader ts-node/esm ./src/BoardController.ts"
-  },
-  "type": "module"
+  }
 }
