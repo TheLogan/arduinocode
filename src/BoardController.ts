@@ -11,17 +11,24 @@ board.on("ready", function () {
   const controller = "PCA9685" ;
   // let led = new five.Led("P1-13");
 
-  const a = new five.Servo({
+  const x = new five.Servo({
     controller,
     pin: 0,
   });
 
-  const b = new five.Servo({
+  const y = new five.Servo({
     controller,
     range: [0, 180],
     pin: 1,
   });
 
-  a.to(0);
-  b.to(0);
+  x.to(90);
+  y.to(90);
+
+  board.repl.inject({
+    // Allow limited on/off control access to the
+    // Led instance from the REPL.
+    x,
+    y
+  });
 });
