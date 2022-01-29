@@ -4,6 +4,7 @@
     "@types/johnny-five": "^1.3.2",
     "express": "^4.17.2",
     "johnny-five": "^2.1.0",
+    "raspi-io": "^11.0.0",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
   },
