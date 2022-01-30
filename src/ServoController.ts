@@ -3,6 +3,7 @@ import { eServoId } from "./helpers/enums.js";
 import { iCommand, iServoDets } from "./helpers/interfaces.js";
 import { delay } from "./helpers/utils.js";
 const { Board, Servo } = pkg;
+let Raspi = require("raspi-io").RaspiIO;
 
 export class ServoController {
   board: pkg.Board;
@@ -14,7 +15,11 @@ export class ServoController {
   commandArr: iCommand[] = [];
 
   constructor() {
-    this.board = new Board({ port: "COM4" });
+    this.board = new five.Board({
+      io: new Raspi()
+    });
+
+    // this.board = new Board({ port: "COM4" });
 
     // this.board = new Board();
     this.board.on("ready", () => {
