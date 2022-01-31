@@ -2,14 +2,11 @@ import { Board, Servo } from "johnny-five";
 import { eServoId } from "./helpers/enums";
 import { iCommand, iServoDets } from "./helpers/interfaces";
 import { delay } from "./helpers/utils";
-// const { Board, Servo } = five;
 let Raspi = require("raspi-io").RaspiIO;
 
 export class ServoController {
   board: Board;
   servoList: {[index: string]: iServoDets}={};
-  // servoX: Servo | null = null;
-  // servoY: Servo | null = null;
   boardReady = false;
 
   commandArr: iCommand[] = [];
@@ -19,9 +16,6 @@ export class ServoController {
       io: new Raspi()
     });
 
-    // this.board = new Board({ port: "COM4" });
-
-    // this.board = new Board();
     this.board.on("ready", () => {
       this.servoList["x"] ={
         servo: new Servo({
