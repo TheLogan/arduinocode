@@ -1,21 +1,21 @@
-import pkg from "johnny-five";
-import { eServoId } from "./helpers/enums.js";
-import { iCommand, iServoDets } from "./helpers/interfaces.js";
-import { delay } from "./helpers/utils.js";
-const { Board, Servo } = pkg;
+import { Board, Servo } from "johnny-five";
+import { eServoId } from "./helpers/enums";
+import { iCommand, iServoDets } from "./helpers/interfaces";
+import { delay } from "./helpers/utils";
+// const { Board, Servo } = five;
 let Raspi = require("raspi-io").RaspiIO;
 
 export class ServoController {
-  board: pkg.Board;
+  board: Board;
   servoList: {[index: string]: iServoDets}={};
-  // servoX: pkg.Servo | null = null;
-  // servoY: pkg.Servo | null = null;
+  // servoX: Servo | null = null;
+  // servoY: Servo | null = null;
   boardReady = false;
 
   commandArr: iCommand[] = [];
 
   constructor() {
-    this.board = new five.Board({
+    this.board = new Board({
       io: new Raspi()
     });
 
@@ -46,11 +46,11 @@ export class ServoController {
       this.servoList["jaw"] = {
         servo: new Servo({
           controller: "PCA9685",
-          range: [0, 90],
+          range: [0, 120],
           pin: 2,
-          startAt: 90
+          startAt: 120
         }),
-        center: 90
+        center: 120
       }
 
       this.servoList["brow"] = {

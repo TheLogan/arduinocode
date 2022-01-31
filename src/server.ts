@@ -1,7 +1,7 @@
 import express from 'express'
-import { ServoController } from './ServoController.js';
+import { ServoController } from './ServoController';
 import bodyParser from 'body-parser'
-import { iMove } from './helpers/interfaces.js';
+import { iMove } from './helpers/interfaces';
 
 const app = express()
 const controller = new ServoController()
@@ -29,10 +29,12 @@ app.post("/testmove", (req, res) => {
   let data:iMove = req.body;
 
   if(data.servo == null || data.pos == null) {
+    console.log("wrong value", "servo", data.servo, "pos", data.pos)
     res.sendStatus(400);
     return;
   }
   
+  console.log("success", "servo", data.servo, "pos", data.pos)
   controller.testMove(data.servo, data.pos);
   res.send();
 })
